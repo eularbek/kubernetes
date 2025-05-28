@@ -1,9 +1,13 @@
 apiVersion: v1
 kind: Pod
 metadata:
+  labels:
+    app: centos-pod
   name: centos-pod
 spec:
+  nodeSelector:
+    kubernetes.io/hostname: gke-cluster-1-default-pool-9f118bbe-lfjn 
   containers:
   - name: centos
-    image: centos
+    image: quay.io/centos/centos:stream9
     command: ["/bin/bash", "-c", "sleep 3600"]
