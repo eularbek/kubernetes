@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress 
+metadata:
+  name: tls-ingress
+spec: 
+  tls:
+  - hosts:
+    - example.com         # <-- Replace with your domain
+    secretName: tls-secret
+  rules:
+  - host: example.com     # <-- Replace with your domain
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: test-service1   # <-- Check spelling
+            port:
+              number: 80  
