@@ -1,0 +1,13 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy 
+metadata:
+  name: ga-allow-netpol
+spec:
+  podSelector: 
+    matchLabels:
+      env: ga
+  ingress:
+  - from:
+    - podSelector: 
+        matchLabels:
+          env: qa
